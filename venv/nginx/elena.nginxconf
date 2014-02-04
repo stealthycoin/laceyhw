@@ -1,0 +1,37 @@
+
+upstream elena_server {
+  server unix:/home/homework/laceyhw//elena/run/gunicorn.sock fail_timeout=0;
+}
+
+server {
+  listen 80;
+  server_name elena;
+  
+  max_client_body_size 4G;
+
+  access_log /home/homework/laceyhw//elena/logs/nginx-access.log;
+  error_log /home/homework/laceyhw//elena/logs/nginx-error.log;
+
+  location /static/ {
+    alias /home/homework/laceyhw//elena/static/;
+  } 
+
+  location /media/ {
+    alias /home/homework/laceyhw//elena/media/;
+  } 
+
+  location / {
+    proxy_set_header X-Forwarded-For $proxy_add_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    if (!-f $request_filename) {
+      proxy_pass http://elena_server;
+      break;
+    }
+  }
+
+  error_page 500 502 503 504 /500.html;
+  location = /500.html {
+    root /home/homework/laceyhw//elena/static/;
+  }
+}

@@ -1,0 +1,27 @@
+<!-- Generated code for page: log -->
+{% extends "standard.html" %}
+{% block title %}Log{% endblock %}
+{% block content %}<h1>Log</h1>
+
+<div class='box'>
+  <h2>Life Science</h2>
+  {{ scienceList|safe }}
+</div>
+
+<div class='box'>
+  <h2>Social Studies</h2>
+  {{ currentList|safe }}
+</div>
+
+<div class='box'>
+  <h2>Math</h2>
+  {{ mathList|safe }}
+</div>
+
+<div class='box'>
+  <h2>Physical Education</h2>
+  {{ peList|safe }}
+</div>
+
+
+{% endblock %}

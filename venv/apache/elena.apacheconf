@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+        ServerAlias localhost
+
+        WSGIScriptAlias / /home/homework/laceyhw/venv/elena/elena/wsgideploy.py
+        <Directory "/home/homework/laceyhw/venv/elena/elena/">
+               Order deny,allow
+               Allow from all
+        </Directory>
+
+        Alias /static/ /home/homework/laceyhw/venv/elena/elena/static/
+        <Directory "//home/homework/laceyhw/venv/elena/elena/elena/static/">
+               Order deny,allow
+               Allow from all
+        </Directory>
+
+	
+
+</VirtualHost>

@@ -1,0 +1,7 @@
+<div>
+<ul>
+{% for o in objs %}
+    <li><h3>{{ o.title }} - {{ o.subject }} ({{ o.date }})</h3><p>By: {{ o.source }}</p><p>Summary: {{ o.summary }}</p><p>Other ideas: {{ o.other }}</p></li>
+{% endfor %}
+</ul>
+</div>
